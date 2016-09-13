@@ -1,0 +1,9 @@
+*.db
+*.pdf
+*.old
+e
+e2
+e3
+bred*
+*.retry
+node_modules

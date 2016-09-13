@@ -17,6 +17,7 @@ const cache = Cache({
 function main(){
     var app = express();
     app.get('/trianglify', function(req, res) {
+        res.setHeader("Content-Type", "image/svg+xml");
         var article_id = req.query.id;
         if (article_id === undefined){
             article_id = 1;

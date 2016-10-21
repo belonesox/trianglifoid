@@ -51,9 +51,24 @@ function main(){
                     width: 256*3,
                     height: 256*1
                 });
-                var svg_pattern = XMLSerializer.serializeToString(pattern.svg());
-                cache.save([{key: article_id, value: svg_pattern}]);
-                return res.send(svg_pattern);
+                var strip_svg = /<[/]?svg[^>]*>/g
+                var svg_pattern = XMLSerializer.serializeToString(pattern.svg()).replace(strip_svg, '');
+                //var svg_pattern = svg_pattern.replace(strip_svg, '');
+                var fullsvg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1536" height="512"> \
+<defs> \
+  <clipPath id="cut-block"> \
+    <rect x="0" y="0" width="768" height="256" /> \
+  </clipPath> \
+  <g id="original" clip-path="url(#cut-block)"> ' + svg_pattern + ' \
+</g>  \
+</defs> \
+<use xlink:href="#original" transform="scale(1, 1) translate(0 0)"/>  \
+<use xlink:href="#original" transform="scale(1, -1) translate(0 -512)"/>  \
+<use xlink:href="#original" transform="scale(-1, 1) translate(-1536 0)"/>  \
+<use xlink:href="#original" transform="scale(-1, -1) translate(-1536 -512)"/>  \
+</svg>'
+                cache.save([{key: article_id, value: fullsvg}]);
+                return res.send(fullsvg);
         });
     });
 

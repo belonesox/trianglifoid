@@ -16,11 +16,11 @@
     "url": "https://github.com/belonesox/trianglifoid/issues"
   },
   "homepage": "https://github.com/belonesox/trianglifoid#readme",
-  "dependencies" :
-    { "express" : ">=4.14.0"
-    , "trianglify" : ">=1.0.1"
-    , "xmlserializer" : ">=0.4.0"
-    , "express-cluster" : ">=0.0.4"
-    , "file-system-cache" : ">=1.0.5"
-    }
+  "dependencies": {
+    "express": ">=4.14.0",
+    "trianglify": "1.0.1 - 3.0.1",
+    "xmlserializer": ">=0.4.0",
+    "express-cluster": ">=0.0.4",
+    "file-system-cache": ">=1.0.5"
+  }
 }

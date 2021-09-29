@@ -28,9 +28,9 @@ function main(){
                 return res.send(result)
             })            
             .catch(function(err){
-                var cell_size = 16 + (2 ^ article_id % 84);
-                var variance = (2 ^ article_id % 128) * 1.0 / 128;
-                var stroke_width = (2 ^ article_id % 128) * 12.0 / 128;
+                var cell_size = 16 + (2 ^ article_id) % 84;
+                var variance = ((2 ^ article_id) % 128) * 1.0 / 128;
+                var stroke_width = ((2 ^ article_id) % 128) * 12.0 / 128;
                 var colorbrewer_names = [
                     'YlGn', 'YlGnBu', 'GnBu', 'BuGn', 'PuBuGn', 'PuBu',
                     //'BuPu',
@@ -40,7 +40,7 @@ function main(){
                         'RdBu', 'RdGy', 'RdYlBu', 'Spectral', 'RdYlGn', 'Accent', 'Dark2',
                         'Paired', 'Pastel1', 'Pastel2', 'Set1', 'Set2', 'Set3'
                 ];
-                var color_name = colorbrewer_names[2 ^ article_id % colorbrewer_names.length];
+                var color_name = colorbrewer_names[(2 ^ article_id) % colorbrewer_names.length];
                 var pattern = Trianglify({
                     cell_size: cell_size,
                     variance: variance,
